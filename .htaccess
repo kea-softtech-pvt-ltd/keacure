@@ -1,0 +1,28 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+<IfModule mod_headers.c>    
+  Header add Access-Control-Allow-Origin "*" 
+</IfModule>
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+RewriteRule    ^privacy/?$    default/source/workflow/privacy/privacy.php
+RewriteRule    ^terms/?$    default/source/workflow/terms/terms.php
+
+RewriteRule    ^doctor/?$    default/source/workflow/doctor/doctor.php
+RewriteRule    ^doctor/([^/]+)/([^/]+)/?$    default/source/workflow/doctor/doctor-list.php?categoryId=$2
+RewriteRule    ^doctor-details/([^/]+)/([^/]+)/?$    default/source/workflow/doctor/doctor-details.php?doctorId=$2
+RewriteRule    ^booking/?$    default/source/workflow/booking/booking.php
+RewriteRule    ^booking/confirm/?$    default/source/workflow/booking/confirm.php
+RewriteRule    ^login/?$    default/source/workflow/login/login.php
+RewriteRule    ^register/?$    default/source/workflow/login/register.php
+RewriteRule    ^contact/?$    default/source/workflow/contact/contact-us.php
+RewriteRule    ^add-contact/?$    default/source/workflow/contact/add-contact.php
+
+
+RewriteRule    ^admin/?$    administrator/source/index.php
+RewriteRule    ^admin/users?$    administrator/source/users/users.php
+RewriteRule    ^admin/login?$    administrator/source/login/login.php
+RewriteRule    ^admin/dashboard?$    administrator/source/dashboard/dashboard.php
