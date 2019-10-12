@@ -14,7 +14,7 @@ class Database
 				 
 
 				
-			  function __construct()
+		public function __construct()
 				{						  
 					$this->HOST_NAME=HST;
 					$this->DB_USER_NAME=USR;
@@ -37,10 +37,12 @@ class Database
 * @return   : No
 */
 			
-			function Connect_Db()
+			public function Connect_Db()
 				{
-					$this->connection=mysql_connect($this->HOST_NAME,$this->DB_USER_NAME,$this->DB_USER_PASSWORD) or $this->DieError("I cannot connect to the database because: ");
-					$this->SelectDatabase();
+					echo "hi" . $this->HOST_NAME . $this->DB_USER_NAME . $this->DB_USER_PASSWORD . $this->DB_NAME;
+					$this->connection=mysqli_connect($this->HOST_NAME,$this->DB_USER_NAME,$this->DB_USER_PASSWORD, $this->DB_NAME) or $this->DieError($this->connection, "I cannot connect to the database because: ");
+					//$this->SelectDatabase($this->connection);
+					return $this->connection;
 				}
 
 /** 
@@ -49,9 +51,9 @@ class Database
 * @param    : No
 * @return   : Error if not able to connect to the database and select database name
 */							
-			function SelectDatabase()
+			public function SelectDatabase($connection)
 				{
-					mysql_select_db ($this->DB_NAME) or $this->DieError();
+					mysqli_select_db ($connection, $this->DB_NAME) or $this->DieError($connection);
 				}				
 /**
 * @function DieError($message="")
@@ -59,9 +61,9 @@ class Database
 * @param    : No
 * @return   : Returns MySQL Error with die
 */
-			function DieError($message="")
+			public function DieError($connection, $message="")
 				{
-					return die ($message . $this->Error());
+					return die ($message . $this->Error($connection));
 				}				
 /**
 * @function Error()
@@ -70,9 +72,9 @@ class Database
 * @return   : Returns MySQL Error
 */
 
-			function Error()
+public function Error($connection)
 				{
-					return mysql_error();
+					return mysqli_error($connection);
 				}
 /**
 * @function CloseConnection()
@@ -81,21 +83,21 @@ class Database
 * @return   : No
 */
 
-			function CloseConnection()
+public function CloseConnection()
 				{
-					@mysql_close($this->connection);
+					@mysqli_close($this->connection);
 				}
 
 /**
-* @function Handle_Mysql_Error($sql,$err,$errno)
+* @function Handle_mysqli_Error($sql,$err,$errno)
 * Handle Error Function : Need to be called when mysql error need to be handled
 * @param $sql : sql statement to be executed
-* @param $err : mysql_error()
+* @param $err : mysqli_error($connection)
 * @param $errno: myslq_errno()
 * @return   : Error message with error condition and error number value
 */
 
-			function Handle_Mysql_Error($sql,$err,$errno)
+public function Handle_mysqli_Error($sql,$err,$errno)
 				{
 					echo($sql . "<br>" . $err . "       on   " . $errno);
 					exit();
@@ -106,7 +108,7 @@ class Database
 * @param    : No
 * @return   : Connection closed
 */
-			function __destruct()
+public function __destruct()
 				{ 
 					$this->CloseConnection();
 				} 
@@ -130,7 +132,7 @@ class Database
 * @return   : Resultset of the query
 */ 
 
-			function InsertData($tblName,$arrFieldNameValue,$replace_flag=0,$print_flag=0)
+public function InsertData($tblName,$arrFieldNameValue,$replace_flag=0,$print_flag=0)
 				{ 
 					if($replace_flag==0)  
 					{
@@ -146,8 +148,9 @@ class Database
 					}
 	
 					$sqlSecond =" values(";
-					while(list($key,$value) = each($arrFieldNameValue))
-					{					
+					foreach($arrFieldNameValue as $key =>$value)
+					{	
+						echo $key;				
 						$sqlFirst = $sqlFirst . $key . ",";
 						$value=$this->Protect($value);
 						$sqlSecond = $sqlSecond . $value . ",";
@@ -161,7 +164,6 @@ class Database
 					{
 						echo($sql);		
 					}
-					
 					$result = $this->ExecuteQuery($sql); //Execute sql statement				
 					return $result;
 				}
@@ -181,7 +183,7 @@ class Database
 * @return   : Resultset of the query
 */
 
-			function UpdateData($tblName,$arrFieldValue,$FieldName,$Fieldvalue,$print_flag=0)
+public function UpdateData($tblName,$arrFieldValue,$FieldName,$Fieldvalue,$print_flag=0)
 			{				
 				$sql = "Update " . $tblName . " set ";
 				while(list($key,$value) = each($arrFieldValue))
@@ -210,7 +212,7 @@ class Database
 * @param $value : value of field
 * @return   : Resultset of the query
 */
-			function DeleteData($tblName,$FieldName,$value)
+public function DeleteData($tblName,$FieldName,$value)
 				{
 				 	$sql = "delete from " .$tblName . " where " . $FieldName . "=" . "'".$value."'";
 					$result = $this->ExecuteQuery($sql); //Execute sql statement
@@ -222,10 +224,10 @@ class Database
 * @param $sql : Query to be executed
 * @return   : Resultset of the query
 */
-			function ExecuteQuery($sql) 
+public function ExecuteQuery($sql) 
 			{
-				$this->Connect_Db();
-				$result = mysql_query($sql) or $this->Handle_Mysql_Error($sql,mysql_error(),mysql_errno());
+				$connection = $this->Connect_Db();
+				$result = mysqli_query($connection, $sql) or $this->Handle_mysqli_Error($sql,mysqli_error($connection),mysqli_errno());
 				return $result;
 			}			
 
@@ -237,10 +239,10 @@ class Database
 * @return   : Resultset of the query
 */
 
-			function ExecuteQuery_Rs_Status($sql)
+public function ExecuteQuery_Rs_Status($sql)
 				{
-					$this->Connect_Db(); 
-					$result = mysql_query($sql);
+					$connection = $this->Connect_Db(); 
+					$result = mysqli_query($connection, $sql);
 					return $result;
 				}
 
@@ -255,10 +257,10 @@ class Database
 * @return   : Resultset or count of number of rows depending upon the flag value
 */
 
-			function ExecuteQueryCustom($sql,$flag=1)
+public function ExecuteQueryCustom($sql,$flag=1)
 			{
-				$this->Connect_Db();
-				$result = mysql_query($sql) or $this->Handle_Mysql_Error($sql,mysql_error(),mysql_errno());
+				$connection = $this->Connect_Db();
+				$result = mysqli_query($connection, $sql) or $this->Handle_mysqli_Error($sql,mysqli_error($connection),mysqli_errno());
 
 				if($flag==1)
 				{
@@ -266,7 +268,7 @@ class Database
 				}
 				if($flag==0)
 				{
-					$count=mysql_num_rows($result);
+					$count=mysqli_num_rows($result);
 					return $count;
 				}
 			}
@@ -291,7 +293,7 @@ class Database
 * @return   : Resultset of the query
 */
 
-			function SelectData($fields, $tables, $where = array(), $order = array(), $group=array(),$limit="",$offset=0,$print_flag=0) 
+public function SelectData($fields, $tables, $where = array(), $order = array(), $group=array(),$limit="",$offset=0,$print_flag=0) 
 			 { 
 			 	$fields = implode(",",$fields); 
 				$tables = implode(",", $tables); 
@@ -356,7 +358,7 @@ class Database
 * @return   : Affected rows count
 */
 
-			 function Insert($tables,$fields=array(), $values,$replace_flag = 0,$print_flag=0)
+public function Insert($tables,$fields=array(), $values,$replace_flag = 0,$print_flag=0)
 				 { 
 
 					foreach($values as $key => $val)
@@ -411,7 +413,7 @@ class Database
 						0 : Do not echo
 * @return   : Affected rows count
 */			
-			 function Update($tables, $fields, $values, $where= array(), $limit= "",$print_flag=0) 
+public function Update($tables, $fields, $values, $where= array(), $limit= "",$print_flag=0) 
 				 { 
 					foreach($values as $key=>$val) 
 					{ 
@@ -453,7 +455,7 @@ class Database
 * @return   : Affected rows count
 */			
 
-			 function Delete($table, $where="", $limit="",$print_flag=0) 
+public function Delete($table, $where="", $limit="",$print_flag=0) 
 				 { 
 					$where = implode(" AND ", $where); 
 					if(empty($where) && empty($limit)) 
@@ -490,7 +492,7 @@ class Database
 				"affected_rows" : Return affected rows count
 * @return   : Resultset or count of number of rows depending upon the $return arguments value 
 */
-			 function Query($sql, $return="result") 
+public function Query($sql, $return="result") 
 				 { 
 					$result = $this->ExecuteQuery($sql);
 					
@@ -500,7 +502,7 @@ class Database
 							return $result;
 							break; 
 						case "affected_rows": 
-							return mysql_affected_rows($this->connection); 
+							return mysqli_affected_rows($this->connection); 
 							break; 
 					} 
 				 } 
@@ -511,16 +513,16 @@ class Database
 * @param $val : String in which slashes should be added
 * @return   : String with added slashes
 */
-			function Protect($val)
+public function Protect($val)
 			 { 
 				$value = "'".addslashes($val)."'";
 			   return $value;
 			 }	
-			function FetchAll($rowObj)
+			 public function FetchAll($rowObj)
 				{
 				$result= array();
 				$i= 0;
-				while($rows = @mysql_fetch_object($rowObj))
+				while($rows = @mysqli_fetch_object($rowObj))
 					{
 					foreach($rows as $k => $v)
 						{
@@ -530,10 +532,10 @@ class Database
 					}
 				return $result;
 				}
-		function FetchRow($rowObj)
+				public function FetchRow($rowObj)
 				{
 				$result= array();
-				while($rows = @mysql_fetch_object($rowObj))
+				while($rows = @mysqli_fetch_object($rowObj))
 					{
 					foreach($rows as $k => $v)
 						{

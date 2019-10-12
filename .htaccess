@@ -26,3 +26,4 @@ RewriteRule    ^admin/?$    administrator/source/index.php
 RewriteRule    ^admin/users?$    administrator/source/users/users.php
 RewriteRule    ^admin/login?$    administrator/source/login/login.php
 RewriteRule    ^admin/dashboard?$    administrator/source/dashboard/dashboard.php
+RewriteRule    ^admin/city?$    administrator/source/city/city.php

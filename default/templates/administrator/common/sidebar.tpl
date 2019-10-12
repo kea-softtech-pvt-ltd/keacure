@@ -19,6 +19,12 @@
                     <p>Client Management</p>
                 </a>
             </li>
+             <li>
+                <a href="{$siteroot}admin/city">
+                    <i class="pe-7s-graph"></i>
+                    <p>city</p>
+                </a>
+            </li>
         </ul>
 	</div>
 </div>
