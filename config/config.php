@@ -58,7 +58,7 @@ if($application == "dev") {
 
 	define("MEMBERSHIP_ID", "membership@keacure");
 	define("CONTACT_ID", "info@keacure");
-	define("TITLE_MSG", "TEST")
+	define("TITLE_MSG", "TEST");
 }
 	## Set time zone
 	date_default_timezone_set('Asia/Calcutta');
