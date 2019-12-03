@@ -73,6 +73,8 @@ if($application == "dev") {
 	
 	## Assign site url to smarty variable
 	$smarty->assign("siteroot", SITE_URL);
+	
+	$smarty->assign('adminroot', SITE_URL. "admin");
 	$smarty->assign("version", round(microtime(true) * 1000));
 	
 	

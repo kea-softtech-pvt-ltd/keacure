@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2019-10-12 14:51:11
+/* Smarty version 3.1.29, created on 2019-11-30 18:29:17
   from "D:\php-work\htdocs\keacure\default\templates\administrator\common\header.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5da19b07163f30_51815491',
+  'unifunc' => 'content_5de267a59488e5_44291710',
   'file_dependency' => 
   array (
     'fc0446ea648a164903db4dc2bf0aa5efb844817c' => 
     array (
       0 => 'D:\\php-work\\htdocs\\keacure\\default\\templates\\administrator\\common\\header.tpl',
-      1 => 1486752893,
+      1 => 1575118755,
       2 => 'file',
     ),
   ),
@@ -19,47 +19,47 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5da19b07163f30_51815491 ($_smarty_tpl) {
+function content_5de267a59488e5_44291710 ($_smarty_tpl) {
 ?>
 <head>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="Rasika Deorukhkar">
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-default/assets/images/favicon.ico">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Rasika Deorukhkar">
+  <title><?php echo $_smarty_tpl->tpl_vars['siteTitle']->value;?>
+ - Admin dashboard</title>
+	
+  <!-- Favicons-->
+  <link rel="shortcut icon" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" type="image/x-icon" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/img/apple-touch-icon-57x57-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/img/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/img/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/img/apple-touch-icon-144x144-precomposed.png">
 
-	 <!-- Bootstrap Core CSS -->
-    <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/administrator/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/administrator/css/main.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/default/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Animation library for notifications   -->
-    <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/administrator/css/animate.min.css" rel="stylesheet"/>
-
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/administrator/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-
-    <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
-/administrator/css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <!-- HTML5 Shim IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <?php echo '<script'; ?>
- src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"><?php echo '</script'; ?>
->
-    <![endif]-->
-
-	<title><?php echo $_smarty_tpl->tpl_vars['siteTitle']->value;?>
-</title>
-</head> <?php }
+  <!-- GOOGLE WEB FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+	
+  <!-- Bootstrap core CSS-->
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+common/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon fonts-->
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+common/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Plugin styles -->
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+common/assets/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Main styles -->
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/css/admin.css" rel="stylesheet">
+  <!-- Your custom styles -->
+  <link href="<?php echo $_smarty_tpl->tpl_vars['siteroot']->value;?>
+/administrator/css/admin.css" rel="stylesheet">
+	
+</head><?php }
 }

@@ -1,19 +1,16 @@
-<script src="{$siteroot}/default/assets/js/jquery.js"></script>
-<script src="{$siteroot}/default/assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="{$siteroot}/default/assets/js/bootstrap.min.js"></script>
-<!--   Core JS Files   -->
 
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="{$siteroot}administrator/js/bootstrap-checkbox-radio-switch.js"></script>
-
-	<!--  Charts Plugin -->
-	<script src="{$siteroot}administrator/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="{$siteroot}administrator/js/bootstrap-notify.js"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="{$siteroot}administrator/js/light-bootstrap-dashboard.js"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="{$siteroot}administrator/js/demo.js"></script>
+<!-- Bootstrap core JavaScript-->
+    <script src="{$siteroot}common/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="{$siteroot}common/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{$siteroot}common/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="{$siteroot}common/assets/vendor/chart.js/Chart.js"></script>
+    <script src="{$siteroot}common/assets/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="{$siteroot}common/assets/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<script src="{$siteroot}common/assets/vendor/jquery.selectbox-0.2.js"></script>
+	<script src="{$siteroot}common/assets/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{$siteroot}/administrator/js/admin.js"></script>
+	<!-- Custom scripts for this page-->
+    <script src="{$siteroot}/administrator/js/admin-charts.js"></script>

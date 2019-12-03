@@ -1,9 +1,5 @@
 <?php
 	include_once(realpath(dirname(dirname(dirname(__FILE__)))) . '/includefiles.php');
-
-	$smarty->assign('siteTitle', 'KEA Cure');
-	$smarty->assign('siteName', 'keacure.com');
+	include_once('header.php');
 	$smarty->assign('moduleName', 'admin home');
-
-	$smarty->display(ADMIN_TEMPLATEDIR . 'index.tpl');
 ?>

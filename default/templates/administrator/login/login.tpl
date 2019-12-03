@@ -1,90 +1,36 @@
 <!doctype html>
 <html>
 	{include file='administrator/common/header.tpl'}
-	<link rel="stylesheet" type="text/css" href="{$siteroot}administrator/css/pages/login.css">
-	<body cz-shortcut-listen="true">				
-		<div class="container">
-		   <div class="row">
-		    <div class="col-md-6 col-md-offset-3">
-		      <div class="panel panel-login">
-		        <div class="panel-body">
-		          <div class="row">
-		            <div class="col-lg-12">
-		              <form id="login-form" action="#" method="post" role="form" style="display: block;">
-		                <h2>LOGIN</h2>
-		                  <div class="form-group">
-		                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-		                  </div>
-		                  <div class="form-group">
-		                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-		                  </div>
-		                  <div class="col-xs-6 form-group pull-left checkbox">
-		                    <input id="checkbox1" type="checkbox" name="remember">
-		                    <label for="checkbox1">Remember Me</label>   
-		                  </div>
-		                  <div class="col-xs-6 form-group pull-right">     
-		                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-		                  </div>
-		              </form>
-		              <form id="register-form" action="#" method="post" role="form" style="display: none;">
-		                <h2>REGISTER</h2>
-		                  <div class="form-group">
-		                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-		                  </div>
-		                  <div class="form-group">
-		                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-		                  </div>
-		                  <div class="form-group">
-		                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-		                  </div>
-		                  <div class="form-group">
-		                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-		                  </div>
-		                  <div class="form-group">
-		                    <div class="row">
-		                      <div class="col-sm-6 col-sm-offset-3">
-		                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-		                      </div>
-		                    </div>
-		                  </div>
-		              </form>
-		            </div>
-		          </div>
-		        </div>
-		        <div class="panel-heading">
-		          <div class="row">
-		            <div class="col-xs-6 tabs">
-		              <a href="#" class="active" id="login-form-link"><div class="login">LOGIN</div></a>
-		            </div>
-		            <div class="col-xs-6 tabs">
-		              <a href="#" id="register-form-link"><div class="register">REGISTER</div></a>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+	<body cz-shortcut-listen="true">	
+
+				<main>
+					<div class="container">
+						<div class="row justify-content-md-center">
+							
+							<div id="login" class="col-md-4">
+								<div class=" text-center add_top_20">
+									<a class="navbar-brand" href="{$siteroot}"><img src="../default/assets/img/logo.png" data-retina="true" alt="" width="163" height="36"></a>
+								</div>
+								<div class="box_form add_top_20">
+									<form action="{$siteroot}admin/login" method="post" name="frmLogin">
+										<div class="form-group">
+											<input type="email" name="email" class="form-control" placeholder="Your email address">
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" placeholder="Your password" id="password" name="password">
+										</div>
+										<div class="form-group text-center add_top_20">
+											<input class="btn_1 medium" type="submit" value="Login">
+										</div>
+									</form>
+								</div>
+							</div>
+							<!-- /login -->
+						</div>
+					</div>
+				</main>
+		
 		{include file='administrator/common/footer.tpl'}
 		{include file='administrator/common/scripts.tpl'}
-		<script type="text/javascript">
-			$(function() {
-			    $('#login-form-link').click(function(e) {
-			    	$("#login-form").delay(100).fadeIn(100);
-			 		$("#register-form").fadeOut(100);
-					$('#register-form-link').removeClass('active');
-					$(this).addClass('active');
-					e.preventDefault();
-				});
-				$('#register-form-link').click(function(e) {
-					$("#register-form").delay(100).fadeIn(100);
-			 		$("#login-form").fadeOut(100);
-					$('#login-form-link').removeClass('active');
-					$(this).addClass('active');
-					e.preventDefault();
-				});
-
-			});
-		</script>
 	</body>
 </html>

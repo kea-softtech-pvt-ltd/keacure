@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2019-10-12 14:51:03
+/* Smarty version 3.1.29, created on 2019-11-30 18:16:40
   from "D:\php-work\htdocs\keacure\default\templates\modules\home\home.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5da19afff25400_86942048',
+  'unifunc' => 'content_5de264b09df113_88659616',
   'file_dependency' => 
   array (
     '8638fa8c9805759d8052a9a243407e7389009361' => 
     array (
       0 => 'D:\\php-work\\htdocs\\keacure\\default\\templates\\modules\\home\\home.tpl',
-      1 => 1570802498,
+      1 => 1575117997,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5da19afff25400_86942048 ($_smarty_tpl) {
+function content_5de264b09df113_88659616 ($_smarty_tpl) {
 ?>
 <main>
 		<div class="hero_home version_1">
